@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="教員ポートフォリオサイト - 教育経験とスキルを紹介">
+    <title>教員ポートフォリオ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-content">
+                    <a href="#" class="logo">Portfolio</a>
+                    <button class="nav-toggle" id="navToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="#about" class="nav-link">自己紹介</a></li>
+                        <li><a href="#experience" class="nav-link">経験</a></li>
+                        <li><a href="#projects" class="nav-link">プロジェクト</a></li>
+                        <li><a href="#skills" class="nav-link">スキル</a></li>
+                        <li><a href="#contact" class="nav-link">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="images/profile.jpg" alt="五十嵐貴紀 プロフィール写真" class="profile-img">
+                </div>
+                <div class="hero-text">
+                    <p class="hero-subtitle">教育 × テクノロジー</p>
+                    <h1 class="hero-title">五十嵐 貴紀</h1>
+                    <p class="hero-description">
+                        7年間の教育現場での経験を通じて、課題解決力とコーチング力を培ってきました。
+                        生成AI技術を主体的に習得し、「授業支援AI」「面接練習AI」などの業務改善ツールを開発・導入。
+                        教育現場で培った課題発見力と実装力を掛け合わせ、テクノロジーで社会課題の解決に貢献します。
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">プロジェクトを見る</a>
+                        <a href="#about" class="btn btn-secondary">詳しく見る</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 自己紹介セクション -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">自己紹介</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>課題解決への情熱</h3>
+                    <p>
+                        「課題の本質を捉え、テクノロジーの力で解決することで、より多くの人々の可能性を広げたい」
+                        この想いを胸に、教育現場で7年間、課題解決とプロセス改善に取り組んできました。
+                        一人の教員が貢献できる範囲に限界があることを実感する中で、生成AIという拡張性の高い技術に出会い、
+                        より大きな課題解決に挑戦したいという気持ちが高まりました。
+                    </p>
+                    <h3>コーチングと人材育成</h3>
+                    <p>
+                        「課題集中校」での担任経験を通じて、生徒一人ひとりの背景を深く理解し、内発的動機を引き出すアプローチを確立しました。
+                        全生徒との定期的な1on1面談を実施し、信頼関係を基盤とした個別最適な目標設定と達成支援を行った結果、
+                        担任した2クラス全員の進路目標達成を実現。論理と共感の両面から個と組織のパフォーマンスを最大化する力を培いました。
+                    </p>
+                    <h3>技術力と実装力</h3>
+                    <p>
+                        DMM WEBCAMPで生成AI技術を習得し、「授業支援AI」「面接練習AI」「要録生成AI」など複数の業務改善ツールを開発・導入。
+                        常に「現場の課題をどう解決できるか」という視点を持ち、学んだ知識をすぐに実践に移してきました。
+                        今後はサービス考案から要件定義、開発まで一貫して価値提供できるエンジニアを目指しています。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 経験セクション -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">教育経験・職歴</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023年4月 - 現在</div>
+                        <h3>山形県立寒河江工業高等学校 教諭</h3>
+                        <p>工業（電気）科担当。合理的配慮が必要な生徒が多く在籍するクラス担任として、個別最適化学習とAI活用校務改善を推進。</p>
+                        <ul class="achievement-list">
+                            <li>Google for Educationを活用した個別最適化学習の計画・実施</li>
+                            <li>生成AIを活用した「授業支援AI」「面接練習AI」「要録生成AI」の開発・導入</li>
+                            <li>不登校生徒への伴走支援で毎日登校を実現、インクルーシブなクラス文化を醸成</li>
+                            <li>外部連携キャリアプログラムの企画・実行、全校キャリア面談の体系化を推進</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018年4月 - 2023年3月</div>
+                        <h3>千葉県立茂原樟陽高等学校 教諭</h3>
+                        <p>課題集中校にて担任を2度経験。生徒との1on1面談を軸に、進路決定率100%を達成。</p>
+                        <ul class="achievement-list">
+                            <li>担任した2クラス全員の卒業時進路目標（就職・進学）を達成</li>
+                            <li>生徒会主顧問として、コロナ禍で中止決定された学校行事を交渉・開催を実現</li>
+                            <li>バドミントン部顧問として、目標から逆算した計画策定とデータ活用指導で県大会ベスト16達成</li>
+                            <li>外部専門家（スタートアップ企業エンジニア等）を招聘したキャリア講演会を企画・実現</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024年 - 現在</div>
+                        <h3>DMM WEBCAMP 生成AIエンジニアコース</h3>
+                        <p>生成AI技術を体系的に学習し、教育現場の課題解決に応用。複数の業務改善ツールを開発・実用化。</p>
+                        <ul class="achievement-list">
+                            <li>Python、生成AIアプリケーション開発（API連携、プロンプトエンジニアリング）を習得</li>
+                            <li>現場のニーズをヒアリングし、実用的なツールを開発・導入</li>
+                            <li>学んだ知識をすぐに実践に移し、授業準備や事務作業時間を大幅削減に貢献</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- プロジェクトセクション -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">開発プロジェクト</h2>
+            <p class="section-description">
+                教育現場の課題を解決するため、AI・機械学習技術を活用したWebアプリケーションを開発しています。
+            </p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🎓</div>
+                        <span class="project-tag">教育支援</span>
+                    </div>
+                    <h3>生産技術支援AIアプリ</h3>
+                    <p class="project-description">
+                        工業高校の「生産技術」科目の学習支援AIアプリケーション。電気・電子・情報分野と製造技術について、授業で分からないことを質問できる教育ツール。生徒の理解度に合わせて、専門的な内容を分かりやすく解説します。
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">OpenAI API</span>
+                        <span class="tech-tag">LLM</span>
+                    </div>
+                    <a href="https://seisangijutu-ai-app-bm6dhxkus2rjwv6vaaugnp.streamlit.app/" target="_blank" class="project-link">アプリを見る →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">⚡</div>
+                        <span class="project-tag">教育支援</span>
+                    </div>
+                    <h3>電気回路練習問題サイト</h3>
+                    <p class="project-description">
+                        工業高校生向けの電気回路学習支援システム。基本的な電気素子から交流回路まで、段階的に学習できる練習問題と解説を提供。手書き解答の画像アップロード機能やAIによる自動評価機能を搭載した実践的な教育ツールです。
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">OpenAI API</span>
+                        <span class="tech-tag">画像認識</span>
+                    </div>
+                    <a href="https://circuit-trainer-app-76df4b1dee11.herokuapp.com/" target="_blank" class="project-link">アプリを見る →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🏸</div>
+                        <span class="project-tag">スポーツ</span>
+                    </div>
+                    <h3>Badminton Rally Tracker</h3>
+                    <p class="project-description">
+                        バドミントンのラリーを記録・分析するWebアプリケーション。試合中のラリー数やショットパターンを追跡し、プレイヤーのパフォーマンス向上に役立つデータを可視化します。
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">データ分析</span>
+                        <span class="tech-tag">可視化</span>
+                    </div>
+                    <a href="https://bappton-rally-tracke-xzakvpyx4du9loxvgcg4zc.streamlit.app/" target="_blank" class="project-link">アプリを見る →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🦴</div>
+                        <span class="project-tag">スポーツ</span>
+                    </div>
+                    <h3>骨格解析アプリ</h3>
+                    <p class="project-description">
+                        画像や動画から人体の骨格・姿勢を解析するアプリケーション。スポーツフォームの分析、リハビリテーションの動作確認、姿勢改善のための可視化ツールとして活用できます。
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">MediaPipe</span>
+                        <span class="tech-tag">姿勢推定</span>
+                    </div>
+                    <a href="https://pose-estimation-app-qrplkjgkstxhqv5i4hqmby.streamlit.app/" target="_blank" class="project-link">アプリを見る →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">💼</div>
+                        <span class="project-tag">ビジネス</span>
+                    </div>
+                    <h3>コンサルAI</h3>
+                    <p class="project-description">
+                        ビジネスコンサルティングをサポートするAIアシスタント。経営課題の分析から戦略立案まで、LLMを活用して専門的なアドバイスを提供する対話型コンサルティングツールです。
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">OpenAI API</span>
+                        <span class="tech-tag">LLM</span>
+                    </div>
+                    <a href="https://app-llm-app-nymblsbzxlvd2d84nmmhg8.streamlit.app/" target="_blank" class="project-link">アプリを見る →</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">🎤</div>
+                        <span class="project-tag">教育支援</span>
+                    </div>
+                    <h3>就職・進学面接練習支援AI</h3>
+                    <p class="project-description">
+                        AIを活用した面接練習支援システム。音声入力・音声出力機能を搭載し、実際の面接に近い環境で練習が可能。工業高校生の就職活動や進学面接の準備をサポートする対話型トレーニングツールです。質問への回答をリアルタイムで評価し、改善点のフィードバックも提供します。
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Web Speech API</span>
+                        <span class="tech-tag">OpenAI API</span>
+                        <span class="tech-tag">音声認識</span>
+                    </div>
+                    <a href="https://tbw0619.github.io/interview-ai/" target="_blank" class="project-link">アプリを見る →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- スキルセクション -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">スキル・技術</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🐍</div>
+                    <h3>プログラミング</h3>
+                    <p>Pythonを中心としたWebアプリケーション開発。教育ツールの設計・実装が得意です。</p>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">Git</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🤖</div>
+                    <h3>AI・機械学習</h3>
+                    <p>LLM、画像認識、姿勢推定など、最新のAI技術を教育・スポーツ分野に応用しています。</p>
+                    <div class="skill-tags">
+                        <span class="tag">OpenAI API</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">MediaPipe</span>
+                        <span class="tag">自然言語処理</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎓</div>
+                    <h3>工業教育</h3>
+                    <p>生産技術、電気・電子、情報技術など工業系専門科目の指導経験が豊富です。</p>
+                    <div class="skill-tags">
+                        <span class="tag">生産技術</span>
+                        <span class="tag">電気回路</span>
+                        <span class="tag">情報技術</span>
+                        <span class="tag">製造技術</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3>Web開発</h3>
+                    <p>フロントエンドからバックエンドまで、実用的なWebアプリケーションを構築できます。</p>
+                    <div class="skill-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Heroku</span>
+                        <span class="tag">Streamlit Cloud</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📊</div>
+                    <h3>データ分析・可視化</h3>
+                    <p>データ分析と可視化により、教育効果やスポーツパフォーマンスの向上を支援します。</p>
+                    <div class="skill-tags">
+                        <span class="tag">Pandas</span>
+                        <span class="tag">Matplotlib</span>
+                        <span class="tag">Plotly</span>
+                        <span class="tag">NumPy</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📝</div>
+                    <h3>保有資格</h3>
+                    <p>工業系教員免許をはじめ、教育と技術に関連する資格を保有しています。</p>
+                    <div class="skill-tags">
+                        <span class="tag">高等学校教諭一種（工業）</span>
+                        <span class="tag">情報処理関連資格</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 実績セクション -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <h2 class="section-title">実績・成果</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-number">100%</div>
+                    <h3>進路決定率</h3>
+                    <p>担任クラス全員の進路目標達成</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-number">7年</div>
+                    <h3>教育経験</h3>
+                    <p>高等学校での指導経験</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-number">Best16</div>
+                    <h3>県大会成績</h3>
+                    <p>バドミントン部顧問として達成</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-number">6+</div>
+                    <h3>開発AIツール</h3>
+                    <p>教育現場で実用化・運用中</p>
+                </div>
+            </div>
+
+            <div class="projects">
+                <h3 class="subsection-title">主な取り組み</h3>
+                <div class="project-list">
+                    <div class="project-item">
+                        <h4>生成AIツール開発による教員の業務負荷削減</h4>
+                        <p>教員の長時間労働が学校全体の課題となる中、現場のニーズをヒアリングし、「授業支援AI」「面接練習AI」「要録生成AI」を開発・導入。授業準備や進路指導、事務作業にかかる時間を大幅に削減し、教員がより生徒と向き合う時間を確保できる体制の構築に貢献しました。</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>生徒との対話を通じた進路未決定問題の解決</h4>
+                        <p>「課題集中校」で家庭環境等に多様な課題を抱える生徒が多く在籍する中、全生徒と定期的な1on1面談を実施。個々の背景を深く理解し信頼関係を構築、一人ひとりに合わせた個別の指導計画を策定・実行しました。その結果、問題行動の発生件数を大幅に削減し、2クラス全員の進路目標達成を実現しました。</p>
+                    </div>
+                    <div class="project-item">
+                        <h4>多様なステークホルダーを巻き込む交渉・企画力</h4>
+                        <p>コロナ禍で学校行事が中止決定された際、生徒の成長機会を守るため、客観的データとロジックに基づいた企画書を作成し、学校経営層と粘り強く交渉。一度は覆った決定を再度覆し、開催承認を得ることに成功しました。また、外部専門家を招聘したキャリア講演会の企画・実現など、関係者の利害を調整しプロジェクトを成功に導く力を発揮しています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- お問い合わせセクション -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">お問い合わせ</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>ご連絡お待ちしております</h3>
+                    <p>
+                        転職やキャリアに関するご相談、その他ご質問がございましたら、
+                        お気軽にお問い合わせください。
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h4>メール</h4>
+                                <p>t.bw0619@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h4>所在地</h4>
+                                <p>山形県</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">お名前</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">件名</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">メッセージ</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">送信する</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 五十嵐貴紀 Portfolio. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

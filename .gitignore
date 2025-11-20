@@ -1,0 +1,10 @@
+# 個人情報を含むデータフォルダ
+data/
+
+# OS生成ファイル
+.DS_Store
+Thumbs.db
+
+# エディタ設定
+.vscode/
+.idea/
