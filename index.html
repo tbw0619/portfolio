@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <script>
-    if (location.protocol !== 'https:') {
-      location.replace('https://' + location.host + location.pathname);
-    }
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="五十嵐貴紀 ポートフォリオ - 高校教員×エンジニア">
-  <title>五十嵐貴紀 | 教員×エンジニア</title>
+  <meta name="description" content="ポンコツ教員がガチで作ったポートフォリオ - 教育×エンジニアリング">
+  <title>yakuendai | 教員×エンジニア</title>
+  <!-- Favicon: シアンの回路風アイコン -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0e14'/%3E%3Crect x='2' y='2' width='28' height='28' rx='3' fill='none' stroke='%2300d4ff' stroke-width='1.5'/%3E%3Ccircle cx='8' cy='8' r='2' fill='%2300d4ff'/%3E%3Ccircle cx='24' cy='24' r='2' fill='%23ff6b35'/%3E%3Cline x1='8' y1='8' x2='8' y2='16' stroke='%2300d4ff' stroke-width='1.5'/%3E%3Cline x1='8' y1='16' x2='24' y2='16' stroke='%2300d4ff' stroke-width='1.5'/%3E%3Cline x1='24' y1='16' x2='24' y2='24' stroke='%23ff6b35' stroke-width='1.5'/%3E%3Ccircle cx='8' cy='16' r='1.5' fill='none' stroke='%2300d4ff' stroke-width='1'/%3E%3Ccircle cx='24' cy='16' r='1.5' fill='none' stroke='%23ff6b35' stroke-width='1'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -55,7 +52,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 2.5rem;
-      background: rgba(10,14,20,0.85);
+      background: rgba(10,14,20,0.9);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -65,12 +62,21 @@
       color: var(--accent);
       letter-spacing: 0.15em;
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-logo-dot {
+      width: 6px; height: 6px;
+      background: var(--accent2);
+      border-radius: 50%;
+      animation: blink 1.2s step-end infinite;
+    }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
     .nav-links a {
       color: var(--text-dim);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       letter-spacing: 0.08em;
       transition: color 0.2s;
     }
@@ -125,14 +131,18 @@
       letter-spacing: -0.02em;
       margin-bottom: 1.5rem;
     }
-    .hero h1 span { color: var(--accent); }
+    .hero h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
     .hero-sub {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--text);
       max-width: 520px;
       margin-bottom: 3rem;
       line-height: 1.9;
     }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
     .hero-cta {
       display: inline-flex;
       align-items: center;
@@ -148,6 +158,21 @@
       transition: all 0.25s;
     }
     .hero-cta:hover { background: var(--accent); color: var(--bg); }
+    .hero-cta-sub {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 0.9rem 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .hero-cta-sub:hover { border-color: var(--accent2); color: var(--accent2); }
     .hero-scroll {
       position: absolute;
       bottom: 3rem;
@@ -199,8 +224,41 @@
       margin-bottom: 3.5rem;
     }
 
+    /* ─── NEWS ─── */
+    #news { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .news-list { display: flex; flex-direction: column; gap: 0; }
+    .news-item {
+      display: grid;
+      grid-template-columns: 10rem 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.3rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .news-item:first-child { border-top: 1px solid var(--border); }
+    .news-item:hover { background: rgba(0,212,255,0.03); }
+    .news-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+    .news-text { font-size: 0.9rem; color: var(--text); }
+    .news-badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      padding: 0.15rem 0.5rem;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .badge-new { border: 1px solid var(--accent2); color: var(--accent2); }
+    .badge-dev { border: 1px solid var(--accent); color: var(--accent); }
+    .badge-edu { border: 1px solid #7c3aed; color: #a78bfa; }
+
     /* ─── About ─── */
-    #about { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    #about { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .about-text p { color: var(--text); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.95; }
     .about-text p strong { color: var(--white); font-weight: 700; }
@@ -208,7 +266,7 @@
     .stat-card {
       border: 1px solid var(--border);
       padding: 1.5rem;
-      background: var(--bg);
+      background: var(--surface);
       position: relative;
       overflow: hidden;
       transition: border-color 0.3s;
@@ -235,6 +293,7 @@
     .stat-label { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.05em; }
 
     /* ─── Timeline ─── */
+    #career { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .timeline { position: relative; }
     .timeline::before {
       content: '';
@@ -264,12 +323,12 @@
     .timeline-list li { font-size: 0.85rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 0.3rem; }
 
     /* ─── Projects ─── */
-    #projects { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    #projects { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.5rem; }
     .project-card {
       border: 1px solid var(--border);
       padding: 2rem;
-      background: var(--bg);
+      background: var(--surface);
       transition: all 0.3s;
       display: flex;
       flex-direction: column;
@@ -312,12 +371,12 @@
     .project-link:hover { color: var(--white); }
 
     /* ─── Skills ─── */
-    #skills { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    #skills { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
     .skill-card {
       border: 1px solid var(--border);
       padding: 1.8rem;
-      background: var(--surface);
+      background: var(--bg);
       transition: all 0.3s;
       cursor: default;
     }
@@ -338,6 +397,77 @@
       color: var(--text-dim);
       letter-spacing: 0.05em;
     }
+
+    /* ─── Blog ─── */
+    #blog { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+    .blog-card {
+      border: 1px solid var(--border);
+      padding: 2rem;
+      background: var(--surface);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: all 0.3s;
+    }
+    .blog-card:hover {
+      border-color: var(--accent2);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(255,107,53,0.08);
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .blog-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+    .blog-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      padding: 0.1rem 0.4rem;
+      letter-spacing: 0.06em;
+    }
+    .blog-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.5;
+    }
+    .blog-excerpt {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      flex: 1;
+    }
+    .blog-arrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent2);
+      letter-spacing: 0.08em;
+      align-self: flex-start;
+    }
+    .blog-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      border: 1px solid var(--border);
+      padding: 0.9rem 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: all 0.25s;
+    }
+    .blog-more:hover { border-color: var(--accent2); color: var(--accent2); }
 
     /* ─── Philosophy block ─── */
     .philosophy-block {
@@ -363,7 +493,7 @@
 
     /* ─── Contact ─── */
     #contact { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+    .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
     .link-card {
       display: flex;
       align-items: center;
@@ -376,19 +506,13 @@
     }
     .link-card:hover { border-color: var(--accent); background: rgba(0,212,255,0.04); }
     .link-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .link-info-label { font-size: 0.75rem; color: var(--text-dim); font-family: 'Space Mono', monospace; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
-    .link-info-title { font-size: 0.95rem; color: var(--white); font-weight: 700; }
+    .link-info-label { font-size: 0.7rem; color: var(--text-dim); font-family: 'Space Mono', monospace; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+    .link-info-title { font-size: 0.9rem; color: var(--white); font-weight: 700; }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .contact-info-title { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 1rem; }
     .contact-info p { font-size: 0.95rem; color: var(--text); line-height: 1.9; margin-bottom: 2rem; }
     .contact-details { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 0.9rem;
-      color: var(--text-dim);
-    }
+    .contact-detail { display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; color: var(--text-dim); }
     .contact-detail-icon { font-size: 1.1rem; flex-shrink: 0; }
     .contact-detail a { color: var(--accent); text-decoration: none; }
     .contact-detail a:hover { text-decoration: underline; }
@@ -450,58 +574,101 @@
     /* ─── Animations ─── */
     .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .accent-dot {
-      display: inline-block;
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      margin-left: 2px;
-      vertical-align: middle;
-      animation: blink 1.2s step-end infinite;
-    }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
     /* ─── Responsive ─── */
-    @media (max-width: 768px) {
-      .hero { padding: 0 6vw; padding-top: 6rem; }
+    @media (max-width: 900px) {
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
       .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .news-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      .news-badge { align-self: flex-start; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 0 6vw; padding-top: 6rem; }
       nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.2rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links li:nth-child(n+5) { display: none; }
       .section-inner { padding: 5rem 1.5rem; }
+      .hero h1 { font-size: 3rem; }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#" class="nav-logo">IGARASHI.DEV</a>
+    <a href="#" class="nav-logo">yakuendai<span class="nav-logo-dot"></span></a>
     <ul class="nav-links">
       <li><a href="#about">ABOUT</a></li>
       <li><a href="#career">CAREER</a></li>
       <li><a href="#projects">PROJECTS</a></li>
       <li><a href="#skills">SKILLS</a></li>
+      <li><a href="#blog">BLOG</a></li>
       <li><a href="#contact">CONTACT</a></li>
     </ul>
   </nav>
 
+  <!-- ─── Hero ─── -->
   <section class="hero">
     <div class="hero-bg-text">EDU×<br>TECH</div>
     <div style="position:relative; z-index:1;">
-      <div class="hero-tag">高校教員 × エンジニア</div>
-      <h1>アナログ<span>×</span><br>デジタル<span class="accent-dot"></span></h1>
+      <div class="hero-tag">現役教員 × 自称エンジニア</div>
+      <h1>ポンコツが<br><em>本気</em>出した</h1>
       <p class="hero-sub">7年間の教育現場での経験を通じて、課題解決力とコーチング力を培ってきました。生成AI技術を主体的に習得し、教育現場で培った課題発見力と実装力を掛け合わせ、テクノロジーで社会課題の解決に貢献します。</p>
-      <a href="#about" class="hero-cta">EXPLORE →</a>
+      <div class="hero-buttons">
+        <a href="#projects" class="hero-cta">PROJECTS →</a>
+        <a href="#blog" class="hero-cta-sub">BLOG →</a>
+      </div>
     </div>
     <div class="hero-scroll">SCROLL</div>
   </section>
 
+  <!-- ─── NEWS ─── -->
+  <section id="news">
+    <div class="section-inner">
+      <div class="section-label">NEWS</div>
+      <h2 class="section-title">最新情報</h2>
+      <div class="news-list fade-up">
+        <div class="news-item">
+          <span class="news-date">2026.03.11</span>
+          <span class="news-text">ポートフォリオサイトをダークテーマにリニューアル</span>
+          <span class="news-badge badge-new">NEW</span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2026.02.01</span>
+          <span class="news-text">要録所見自動生成システムを職場で全面展開、年度末の作業時間を大幅削減</span>
+          <span class="news-badge badge-dev">DEV</span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2025.12.15</span>
+          <span class="news-text">就職・進学面接練習支援AIアプリをリリース（音声対話対応）</span>
+          <span class="news-badge badge-dev">DEV</span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2025.10.20</span>
+          <span class="news-text">骨格解析アプリ・Badminton Rally Tracker を公開</span>
+          <span class="news-badge badge-dev">DEV</span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2025.09.01</span>
+          <span class="news-text">生成AIを活用した授業支援ツールの校内研修を実施</span>
+          <span class="news-badge badge-edu">EDU</span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2024.04.01</span>
+          <span class="news-text">DMM WEBCAMP 生成AIエンジニアコース受講開始</span>
+          <span class="news-badge badge-edu">EDU</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── About ─── -->
   <section id="about">
     <div class="section-inner">
       <div class="section-label">ABOUT</div>
       <h2 class="section-title">ポンコツ教員の<br>7年間</h2>
       <div class="about-grid">
         <div class="about-text fade-up">
-          <p>山形県立寒河江工業高校の<strong>電気科教員</strong>として7年間、生徒と向き合いながらずっと「もっとうまくやれないか」を考え続けてきました。</p>
+          <p>工業高校の<strong>電気科教員</strong>として7年間、生徒と向き合いながらずっと「もっとうまくやれないか」を考え続けてきました。</p>
           <p>最初はExcelのマクロから始まり、Python、Google Apps Script、そしてAI・LLM活用へ。授業の課題を解決するために独学で積み上げたスキルが、気づいたら本格的なエンジニアリングになっていました。</p>
           <p><strong>「課題の本質を捉え、テクノロジーの力で解決することで、より多くの人々の可能性を広げたい」</strong>――現場のリアルな課題感とテクノロジーの力を掛け合わせることが、自分の一番の強みだと思っています。</p>
         </div>
@@ -515,6 +682,7 @@
     </div>
   </section>
 
+  <!-- ─── Career ─── -->
   <section id="career">
     <div class="section-inner">
       <div class="section-label">CAREER</div>
@@ -523,7 +691,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-year">2018〜2023</div>
-          <div class="timeline-title">千葉県立茂原樟陽高等学校 教諭</div>
+          <div class="timeline-title">高校教諭（千葉県）</div>
           <div class="timeline-desc">課題集中校にて担任を2度経験。電気・電子・プログラミングを担当。バドミントン部顧問も務める。</div>
           <ul class="timeline-list">
             <li>担任した2クラス全員の卒業時進路目標（就職・進学）を達成</li>
@@ -535,7 +703,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-year">2023〜現在</div>
-          <div class="timeline-title">山形県立寒河江工業高等学校 教諭</div>
+          <div class="timeline-title">工業高校 電気科教諭（東北）</div>
           <div class="timeline-desc">工業（電気）科担当。合理的配慮が必要な生徒が多く在籍するクラス担任として、個別最適化学習とAI活用校務改善を推進。</div>
           <ul class="timeline-list">
             <li>Google for Educationを活用した個別最適化学習の計画・実施</li>
@@ -565,93 +733,59 @@
     </div>
   </section>
 
+  <!-- ─── Projects ─── -->
   <section id="projects">
     <div class="section-inner">
       <div class="section-label">PROJECTS</div>
       <h2 class="section-title">開発プロジェクト</h2>
       <div class="projects-grid">
         <div class="project-card fade-up">
-          <div class="project-header">
-            <div class="project-icon">🎓</div>
-            <span class="project-category">EDU</span>
-          </div>
+          <div class="project-header"><div class="project-icon">🎓</div><span class="project-category">EDU</span></div>
           <div class="project-title">生産技術支援AIアプリ</div>
           <div class="project-desc">工業高校の「生産技術」科目の学習支援AIアプリケーション。電気・電子・情報分野について、授業で分からないことを質問できる教育ツール。生徒の理解度に合わせて専門的な内容を分かりやすく解説します。</div>
-          <div class="skill-tags">
-            <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">OpenAI API</span><span class="tag">LLM</span>
-          </div>
+          <div class="skill-tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">OpenAI API</span><span class="tag">LLM</span></div>
           <a href="https://seisangijutu-ai-app-bm6dhxkus2rjwv6vaaugnp.streamlit.app/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
         </div>
         <div class="project-card fade-up" style="transition-delay:0.1s">
-          <div class="project-header">
-            <div class="project-icon">⚡</div>
-            <span class="project-category">EDU</span>
-          </div>
+          <div class="project-header"><div class="project-icon">⚡</div><span class="project-category">EDU</span></div>
           <div class="project-title">電気回路練習問題サイト</div>
-          <div class="project-desc">工業高校生向けの電気回路学習支援システム。基本的な電気素子から交流回路まで段階的に学習できる練習問題と解説を提供。手書き解答のAIによる自動評価機能を搭載。</div>
-          <div class="skill-tags">
-            <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OpenAI API</span><span class="tag">画像認識</span>
-          </div>
+          <div class="project-desc">工業高校生向けの電気回路学習支援システム。段階的に学習できる練習問題と解説を提供。手書き解答のAI自動評価機能を搭載。</div>
+          <div class="skill-tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OpenAI API</span><span class="tag">画像認識</span></div>
           <a href="https://circuit-trainer-app-76df4b1dee11.herokuapp.com/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
         </div>
         <div class="project-card fade-up" style="transition-delay:0.2s">
-          <div class="project-header">
-            <div class="project-icon">🎤</div>
-            <span class="project-category">EDU</span>
-          </div>
+          <div class="project-header"><div class="project-icon">🎤</div><span class="project-category">EDU</span></div>
           <div class="project-title">就職・進学面接練習支援AI</div>
           <div class="project-desc">AIを活用した面接練習支援システム。音声入力・音声出力機能を搭載し、実際の面接に近い環境で練習が可能。質問への回答をリアルタイムで評価し、改善点のフィードバックも提供します。</div>
-          <div class="skill-tags">
-            <span class="tag">JavaScript</span><span class="tag">Web Speech API</span><span class="tag">OpenAI API</span><span class="tag">音声認識</span>
-          </div>
+          <div class="skill-tags"><span class="tag">JavaScript</span><span class="tag">Web Speech API</span><span class="tag">OpenAI API</span><span class="tag">音声認識</span></div>
           <a href="https://tbw0619.github.io/interview-ai/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
         </div>
         <div class="project-card fade-up" style="transition-delay:0.3s">
-          <div class="project-header">
-            <div class="project-icon">📝</div>
-            <span class="project-category">EDU</span>
-          </div>
+          <div class="project-header"><div class="project-icon">📝</div><span class="project-category">EDU</span></div>
           <div class="project-title">要録所見自動生成システム</div>
           <div class="project-desc">AI活用型の指導要録所見自動生成システム。作業時間を1名30分→1分に短縮（約95%削減）。Gemini 2.0 Flash APIによる高品質な文章生成で、1クラス40名分を約15分で処理できます。</div>
-          <div class="skill-tags">
-            <span class="tag">Google Apps Script</span><span class="tag">Gemini API</span><span class="tag">Google Sheets</span>
-          </div>
+          <div class="skill-tags"><span class="tag">Google Apps Script</span><span class="tag">Gemini API</span><span class="tag">Google Sheets</span></div>
           <a href="https://docs.google.com/spreadsheets/d/1gjfFzByTsoROnPLvVcBlOMDRviJucmy7bsAubXtMuQY/edit?gid=47115155#gid=47115155" target="_blank" rel="noopener" class="project-link">プロジェクトを見る →</a>
         </div>
         <div class="project-card fade-up" style="transition-delay:0.4s">
-          <div class="project-header">
-            <div class="project-icon">🏸</div>
-            <span class="project-category">SPORTS</span>
-          </div>
+          <div class="project-header"><div class="project-icon">🏸</div><span class="project-category">SPORTS</span></div>
           <div class="project-title">Badminton Rally Tracker</div>
           <div class="project-desc">バドミントンのラリーを記録・分析するWebアプリケーション。試合中のラリー数やショットパターンを追跡し、プレイヤーのパフォーマンス向上に役立つデータを可視化します。</div>
-          <div class="skill-tags">
-            <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">データ分析</span><span class="tag">可視化</span>
-          </div>
+          <div class="skill-tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">データ分析</span><span class="tag">可視化</span></div>
           <a href="https://bappton-rally-tracke-xzakvpyx4du9loxvgcg4zc.streamlit.app/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
         </div>
         <div class="project-card fade-up" style="transition-delay:0.5s">
-          <div class="project-header">
-            <div class="project-icon">🦴</div>
-            <span class="project-category">SPORTS</span>
-          </div>
+          <div class="project-header"><div class="project-icon">🦴</div><span class="project-category">SPORTS</span></div>
           <div class="project-title">骨格解析アプリ</div>
           <div class="project-desc">画像や動画から人体の骨格・姿勢を解析するアプリケーション。スポーツフォームの分析、リハビリテーションの動作確認、姿勢改善のための可視化ツールとして活用できます。</div>
-          <div class="skill-tags">
-            <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">MediaPipe</span><span class="tag">姿勢推定</span>
-          </div>
+          <div class="skill-tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">MediaPipe</span><span class="tag">姿勢推定</span></div>
           <a href="https://pose-estimation-app-qrplkjgkstxhqv5i4hqmby.streamlit.app/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
         </div>
         <div class="project-card fade-up" style="transition-delay:0.6s">
-          <div class="project-header">
-            <div class="project-icon">💼</div>
-            <span class="project-category">BIZ</span>
-          </div>
+          <div class="project-header"><div class="project-icon">💼</div><span class="project-category">BIZ</span></div>
           <div class="project-title">コンサルAI</div>
           <div class="project-desc">ビジネスコンサルティングをサポートするAIアシスタント。経営課題の分析から戦略立案まで、LLMを活用して専門的なアドバイスを提供する対話型コンサルティングツール。</div>
-          <div class="skill-tags">
-            <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">OpenAI API</span><span class="tag">LLM</span>
-          </div>
+          <div class="skill-tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">OpenAI API</span><span class="tag">LLM</span></div>
           <a href="https://app-llm-app-nymblsbzxlvd2d84nmmhg8.streamlit.app/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
         </div>
       </div>
@@ -665,6 +799,7 @@
     </div>
   </section>
 
+  <!-- ─── Skills ─── -->
   <section id="skills">
     <div class="section-inner">
       <div class="section-label">SKILLS</div>
@@ -710,10 +845,60 @@
     </div>
   </section>
 
+  <!-- ─── Blog ─── -->
+  <section id="blog">
+    <div class="section-inner">
+      <div class="section-label">BLOG</div>
+      <h2 class="section-title">ブログ・記事</h2>
+      <div class="blog-grid">
+        <a href="https://note.com/yakuendai" target="_blank" rel="noopener" class="blog-card fade-up">
+          <div class="blog-meta">
+            <span class="blog-date">2026.02</span>
+            <span class="blog-tag">AI活用</span>
+          </div>
+          <div class="blog-title">教員の年度末地獄を終わらせた話 ── 指導要録を95%自動化するまで</div>
+          <div class="blog-excerpt">1名30分かかっていた指導要録の所見記入。Gemini APIとGASを組み合わせて、ついに1分を切った。失敗も含めた試行錯誤の全記録。</div>
+          <span class="blog-arrow">note で読む →</span>
+        </a>
+        <a href="https://note.com/yakuendai" target="_blank" rel="noopener" class="blog-card fade-up" style="transition-delay:0.1s">
+          <div class="blog-meta">
+            <span class="blog-date">2025.12</span>
+            <span class="blog-tag">開発</span>
+          </div>
+          <div class="blog-title">ポンコツ教員がAI面接練習アプリを作った理由</div>
+          <div class="blog-excerpt">「練習相手がいない」という生徒のリアルな悩みから生まれた面接練習AI。音声対話機能の実装で詰まった話と、最終的にどう解決したか。</div>
+          <span class="blog-arrow">note で読む →</span>
+        </a>
+        <a href="https://note.com/yakuendai" target="_blank" rel="noopener" class="blog-card fade-up" style="transition-delay:0.2s">
+          <div class="blog-meta">
+            <span class="blog-date">2025.09</span>
+            <span class="blog-tag">教育</span>
+          </div>
+          <div class="blog-title">工業高校でAIを教えてみた ── 生徒の反応と見えてきた課題</div>
+          <div class="blog-excerpt">「ChatGPTって何？」という生徒たちに、生成AIの授業を1から設計した話。うまくいったこと、そうでなかったこと、正直に書きます。</div>
+          <span class="blog-arrow">note で読む →</span>
+        </a>
+        <a href="https://note.com/yakuendai" target="_blank" rel="noopener" class="blog-card fade-up" style="transition-delay:0.3s">
+          <div class="blog-meta">
+            <span class="blog-date">2025.06</span>
+            <span class="blog-tag">キャリア</span>
+          </div>
+          <div class="blog-title">現役教員がエンジニアを目指す理由 ── ポンコツの自己開示</div>
+          <div class="blog-excerpt">なぜ教員を続けながらプログラミングを学び始めたのか。きっかけは「もう一人の自分が欲しい」という切実な気持ちだった。</div>
+          <span class="blog-arrow">note で読む →</span>
+        </a>
+      </div>
+      <a href="https://note.com/yakuendai" target="_blank" rel="noopener" class="blog-more fade-up">
+        note でもっと読む →
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── Contact ─── -->
   <section id="contact">
     <div class="section-inner">
       <div class="section-label">CONTACT</div>
-      <h2 class="section-title">活動記録・連絡先</h2>
+      <h2 class="section-title">連絡先・リンク</h2>
       <div class="links-grid fade-up">
         <a href="https://note.com/yakuendai" target="_blank" rel="noopener" class="link-card">
           <div class="link-icon">📝</div>
@@ -725,7 +910,7 @@
         </a>
         <a href="mailto:t.bw0619@gmail.com" class="link-card">
           <div class="link-icon">✉️</div>
-          <div><div class="link-info-label">CONTACT</div><div class="link-info-title">t.bw0619@gmail.com</div></div>
+          <div><div class="link-info-label">MAIL</div><div class="link-info-title">t.bw0619@gmail.com</div></div>
         </a>
       </div>
       <div class="contact-grid fade-up" style="transition-delay:0.15s">
@@ -740,10 +925,6 @@
             <div class="contact-detail">
               <span class="contact-detail-icon">💻</span>
               <a href="https://github.com/tbw0619?tab=repositories" target="_blank" rel="noopener">github.com/tbw0619</a>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-detail-icon">📍</span>
-              <span>山形県</span>
             </div>
           </div>
         </div>
@@ -771,7 +952,7 @@
   </section>
 
   <footer>
-    <span>© 2026 IGARASHI TAKANORI</span>
+    <span>© 2026 yakuendai</span>
     <div class="footer-links">
       <a href="https://github.com/tbw0619?tab=repositories" target="_blank" rel="noopener">GitHub</a>
       <a href="https://note.com/yakuendai" target="_blank" rel="noopener">Note</a>
@@ -783,7 +964,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
 </body>
