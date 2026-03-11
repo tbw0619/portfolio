@@ -1,473 +1,790 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="教員ポートフォリオサイト - 教育経験とスキルを紹介">
-    <title>教員ポートフォリオ</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script>
+    if (location.protocol !== 'https:') {
+      location.replace('https://' + location.host + location.pathname);
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="五十嵐貴紀 ポートフォリオ - 高校教員×エンジニア">
+  <title>五十嵐貴紀 | 教員×エンジニア</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --surface: #111820;
+      --border: #1e2d3d;
+      --accent: #00d4ff;
+      --accent2: #ff6b35;
+      --text: #c9d1d9;
+      --text-dim: #586069;
+      --white: #f0f6fc;
+      --grid: rgba(0,212,255,0.04);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(10,14,20,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ─── Hero ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 10vw;
+      overflow: hidden;
+    }
+    .hero-bg-text {
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(5rem, 15vw, 16rem);
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,212,255,0.07);
+      line-height: 1;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+    .hero-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 6rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text);
+      max-width: 520px;
+      margin-bottom: 3rem;
+      line-height: 1.9;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.9rem 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .hero-cta:hover { background: var(--accent); color: var(--bg); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-dim);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .hero-scroll::after { content: '↓'; font-size: 1.2rem; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─── Sections ─── */
+    section { position: relative; z-index: 1; }
+    .section-inner { max-width: 1100px; margin: 0 auto; padding: 7rem 2.5rem; }
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 4rem;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ─── About ─── */
+    #about { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text p { color: var(--text); margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.95; }
+    .about-text p strong { color: var(--white); font-weight: 700; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .stat-card {
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .stat-card:hover { border-color: var(--accent); }
+    .stat-card:hover::before { opacity: 1; }
+    .stat-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.05em; }
+
+    /* ─── Timeline ─── */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 1.2rem;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--border), transparent);
+    }
+    .timeline-item { position: relative; padding-left: 4rem; padding-bottom: 3rem; }
+    .timeline-dot {
+      position: absolute;
+      left: 0.7rem;
+      top: 0.4rem;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid var(--accent);
+      background: var(--bg);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 12px rgba(0,212,255,0.4);
+    }
+    .timeline-year { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+    .timeline-title { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .timeline-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.7; }
+    .timeline-list { margin-top: 0.8rem; padding-left: 1.2rem; }
+    .timeline-list li { font-size: 0.85rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 0.3rem; }
+
+    /* ─── Projects ─── */
+    #projects { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      border: 1px solid var(--border);
+      padding: 2rem;
+      background: var(--bg);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,212,255,0.08);
+    }
+    .project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .project-icon { font-size: 1.6rem; }
+    .project-category {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--accent2);
+      border: 1px solid var(--accent2);
+      padding: 0.15rem 0.5rem;
+      letter-spacing: 0.08em;
+    }
+    .project-title { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.8rem; }
+    .project-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.8; flex: 1; }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+      align-self: flex-start;
+    }
+    .project-link:hover { color: var(--white); }
+
+    /* ─── Skills ─── */
+    #skills { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .skill-card {
+      border: 1px solid var(--border);
+      padding: 1.8rem;
+      background: var(--surface);
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .skill-card:hover {
+      border-color: var(--accent2);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(255,107,53,0.1);
+    }
+    .skill-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+    .skill-name { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .skill-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.7; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+    .tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── Philosophy block ─── */
+    .philosophy-block {
+      border-left: 3px solid var(--accent);
+      padding: 2.5rem 3rem;
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+      margin-top: 4rem;
+    }
+    .philosophy-block::after {
+      content: '"';
+      position: absolute;
+      right: 2rem;
+      bottom: -2rem;
+      font-size: 10rem;
+      color: rgba(0,212,255,0.05);
+      font-family: 'Space Mono', monospace;
+      line-height: 1;
+    }
+    .philosophy-text { font-size: 1.3rem; font-weight: 700; color: var(--white); line-height: 1.8; letter-spacing: 0.02em; }
+    .philosophy-text em { color: var(--accent); font-style: normal; }
+
+    /* ─── Contact ─── */
+    #contact { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.8rem;
+      background: var(--bg);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .link-card:hover { border-color: var(--accent); background: rgba(0,212,255,0.04); }
+    .link-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .link-info-label { font-size: 0.75rem; color: var(--text-dim); font-family: 'Space Mono', monospace; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+    .link-info-title { font-size: 0.95rem; color: var(--white); font-weight: 700; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .contact-info-title { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 1rem; }
+    .contact-info p { font-size: 0.95rem; color: var(--text); line-height: 1.9; margin-bottom: 2rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+    .contact-detail-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .contact-detail a { color: var(--accent); text-decoration: none; }
+    .contact-detail a:hover { text-decoration: underline; }
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group textarea {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.8rem 1rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.9rem 2rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: all 0.25s;
+      align-self: flex-start;
+    }
+    .btn-submit:hover { background: var(--accent); color: var(--bg); }
+
+    /* ─── Footer ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      position: relative;
+      z-index: 1;
+    }
+    footer a { color: var(--text-dim); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    .footer-links { display: flex; gap: 2rem; }
+
+    /* ─── Animations ─── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .accent-dot {
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1.2s step-end infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .hero { padding: 0 6vw; padding-top: 6rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .section-inner { padding: 5rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- ヘッダー -->
-    <header class="header">
-        <nav class="nav">
-            <div class="container">
-                <div class="nav-content">
-                    <a href="#" class="logo">Portfolio</a>
-                    <button class="nav-toggle" id="navToggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <ul class="nav-menu" id="navMenu">
-                        <li><a href="#about" class="nav-link">自己紹介</a></li>
-                        <li><a href="#experience" class="nav-link">経験</a></li>
-                        <li><a href="#projects" class="nav-link">プロジェクト</a></li>
-                        <li><a href="#skills" class="nav-link">スキル</a></li>
-                        <li><a href="#contact" class="nav-link">お問い合わせ</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+  <nav>
+    <a href="#" class="nav-logo">IGARASHI.DEV</a>
+    <ul class="nav-links">
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#career">CAREER</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#skills">SKILLS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
 
-    <!-- ヒーローセクション -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-image">
-                    <img src="images/profile.jpg" alt="五十嵐貴紀 プロフィール写真" class="profile-img">
-                </div>
-                <div class="hero-text">
-                    <p class="hero-subtitle">教育 × テクノロジー</p>
-                    <h1 class="hero-title">五十嵐 貴紀</h1>
-                    <p class="hero-description">
-                        7年間の教育現場での経験を通じて、課題解決力とコーチング力を培ってきました。
-                        生成AI技術を主体的に習得し、「授業支援AI」「面接練習AI」などの業務改善ツールを開発・導入。
-                        教育現場で培った課題発見力と実装力を掛け合わせ、テクノロジーで社会課題の解決に貢献します。
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">プロジェクトを見る</a>
-                        <a href="#about" class="btn btn-secondary">詳しく見る</a>
-                    </div>
-                </div>
-            </div>
+  <section class="hero">
+    <div class="hero-bg-text">EDU×<br>TECH</div>
+    <div style="position:relative; z-index:1;">
+      <div class="hero-tag">高校教員 × エンジニア</div>
+      <h1>アナログ<span>×</span><br>デジタル<span class="accent-dot"></span></h1>
+      <p class="hero-sub">7年間の教育現場での経験を通じて、課題解決力とコーチング力を培ってきました。生成AI技術を主体的に習得し、教育現場で培った課題発見力と実装力を掛け合わせ、テクノロジーで社会課題の解決に貢献します。</p>
+      <a href="#about" class="hero-cta">EXPLORE →</a>
+    </div>
+    <div class="hero-scroll">SCROLL</div>
+  </section>
+
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label">ABOUT</div>
+      <h2 class="section-title">ポンコツ教員の<br>7年間</h2>
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <p>山形県立寒河江工業高校の<strong>電気科教員</strong>として7年間、生徒と向き合いながらずっと「もっとうまくやれないか」を考え続けてきました。</p>
+          <p>最初はExcelのマクロから始まり、Python、Google Apps Script、そしてAI・LLM活用へ。授業の課題を解決するために独学で積み上げたスキルが、気づいたら本格的なエンジニアリングになっていました。</p>
+          <p><strong>「課題の本質を捉え、テクノロジーの力で解決することで、より多くの人々の可能性を広げたい」</strong>――現場のリアルな課題感とテクノロジーの力を掛け合わせることが、自分の一番の強みだと思っています。</p>
         </div>
-    </section>
-
-    <!-- 自己紹介セクション -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">自己紹介</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>課題解決への情熱</h3>
-                    <p>
-                        「課題の本質を捉え、テクノロジーの力で解決することで、より多くの人々の可能性を広げたい」
-                        この想いを胸に、教育現場で7年間、課題解決とプロセス改善に取り組んできました。
-                        一人の教員が貢献できる範囲に限界があることを実感する中で、生成AIという拡張性の高い技術に出会い、
-                        より大きな課題解決に挑戦したいという気持ちが高まりました。
-                    </p>
-                    <h3>コーチングと人材育成</h3>
-                    <p>
-                        「課題集中校」での担任経験を通じて、生徒一人ひとりの背景を深く理解し、内発的動機を引き出すアプローチを確立しました。
-                        全生徒との定期的な1on1面談を実施し、信頼関係を基盤とした個別最適な目標設定と達成支援を行った結果、
-                        担任した2クラス全員の進路目標達成を実現。論理と共感の両面から個と組織のパフォーマンスを最大化する力を培いました。
-                    </p>
-                    <h3>技術力と実装力</h3>
-                    <p>
-                        DMM WEBCAMPで生成AI技術を習得し、「授業支援AI」「面接練習AI」「要録生成AI」など複数の業務改善ツールを開発・導入。
-                        常に「現場の課題をどう解決できるか」という視点を持ち、学んだ知識をすぐに実践に移してきました。
-                        今後はサービス考案から要件定義、開発まで一貫して価値提供できるエンジニアを目指しています。
-                    </p>
-                </div>
-            </div>
+        <div class="about-stats fade-up" style="transition-delay:0.15s">
+          <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">年間の教員経験</div></div>
+          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">担任クラス進路決定率</div></div>
+          <div class="stat-card"><div class="stat-num">7+</div><div class="stat-label">開発AIツール・アプリ</div></div>
+          <div class="stat-card"><div class="stat-num">30→<br><span style="font-size:1.4rem">1</span></div><div class="stat-label">分 指導要録自動化</div></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- 経験セクション -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">教育経験・職歴</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2018年4月 - 2023年3月</div>
-                        <h3>千葉県立茂原樟陽高等学校 教諭</h3>
-                        <p>課題集中校にて担任を2度経験。生徒との1on1面談を軸に、進路決定率100%を達成。</p>
-                        <ul class="achievement-list">
-                            <li>担任した2クラス全員の卒業時進路目標（就職・進学）を達成</li>
-                            <li>生徒会主顧問として、コロナ禍で中止決定された学校行事を交渉・開催を実現</li>
-                            <li>バドミントン部顧問として、目標から逆算した計画策定とデータ活用指導で県大会ベスト16達成</li>
-                            <li>外部専門家（スタートアップ企業エンジニア等）を招聘したキャリア講演会を企画・実現</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023年4月 - 現在</div>
-                        <h3>山形県立寒河江工業高等学校 教諭</h3>
-                        <p>工業（電気）科担当。合理的配慮が必要な生徒が多く在籍するクラス担任として、個別最適化学習とAI活用校務改善を推進。</p>
-                        <ul class="achievement-list">
-                            <li>Google for Educationを活用した個別最適化学習の計画・実施</li>
-                            <li>生成AIを活用した「授業支援AI」「面接練習AI」「要録生成AI」の開発・導入</li>
-                            <li>不登校生徒への伴走支援で毎日登校を実現、インクルーシブなクラス文化を醸成</li>
-                            <li>外部連携キャリアプログラムの企画・実行、全校キャリア面談の体系化を推進</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">2024年 - 現在</div>
-                        <h3>DMM WEBCAMP 生成AIエンジニアコース</h3>
-                        <p>生成AI技術を体系的に学習し、教育現場の課題解決に応用。複数の業務改善ツールを開発・実用化。</p>
-                        <ul class="achievement-list">
-                            <li>Python、生成AIアプリケーション開発（API連携、プロンプトエンジニアリング）を習得</li>
-                            <li>現場のニーズをヒアリングし、実用的なツールを開発・導入</li>
-                            <li>学んだ知識をすぐに実践に移し、授業準備や事務作業時間を大幅削減に貢献</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <section id="career">
+    <div class="section-inner">
+      <div class="section-label">CAREER</div>
+      <h2 class="section-title">これまでの歩み</h2>
+      <div class="timeline fade-up">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2018〜2023</div>
+          <div class="timeline-title">千葉県立茂原樟陽高等学校 教諭</div>
+          <div class="timeline-desc">課題集中校にて担任を2度経験。電気・電子・プログラミングを担当。バドミントン部顧問も務める。</div>
+          <ul class="timeline-list">
+            <li>担任した2クラス全員の卒業時進路目標（就職・進学）を達成</li>
+            <li>生徒会主顧問として、コロナ禍で中止決定された学校行事を交渉・開催を実現</li>
+            <li>バドミントン部顧問として、データ活用指導で県大会ベスト16達成</li>
+            <li>外部専門家を招聘したキャリア講演会を企画・実現</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- プロジェクトセクション -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title">開発プロジェクト</h2>
-            <p class="section-description">
-                教育現場の課題を解決するため、AI・機械学習技術を活用したWebアプリケーションを開発しています。
-            </p>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🎓</div>
-                        <span class="project-tag">教育支援</span>
-                    </div>
-                    <h3>生産技術支援AIアプリ</h3>
-                    <p class="project-description">
-                        工業高校の「生産技術」科目の学習支援AIアプリケーション。電気・電子・情報分野と製造技術について、授業で分からないことを質問できる教育ツール。生徒の理解度に合わせて、専門的な内容を分かりやすく解説します。
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">OpenAI API</span>
-                        <span class="tech-tag">LLM</span>
-                    </div>
-                    <a href="https://seisangijutu-ai-app-bm6dhxkus2rjwv6vaaugnp.streamlit.app/" target="_blank" class="project-link">アプリを見る →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">⚡</div>
-                        <span class="project-tag">教育支援</span>
-                    </div>
-                    <h3>電気回路練習問題サイト</h3>
-                    <p class="project-description">
-                        工業高校生向けの電気回路学習支援システム。基本的な電気素子から交流回路まで、段階的に学習できる練習問題と解説を提供。手書き解答の画像アップロード機能やAIによる自動評価機能を搭載した実践的な教育ツールです。
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">OpenAI API</span>
-                        <span class="tech-tag">画像認識</span>
-                    </div>
-                    <a href="https://circuit-trainer-app-76df4b1dee11.herokuapp.com/" target="_blank" class="project-link">アプリを見る →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🏸</div>
-                        <span class="project-tag">スポーツ</span>
-                    </div>
-                    <h3>Badminton Rally Tracker</h3>
-                    <p class="project-description">
-                        バドミントンのラリーを記録・分析するWebアプリケーション。試合中のラリー数やショットパターンを追跡し、プレイヤーのパフォーマンス向上に役立つデータを可視化します。
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">データ分析</span>
-                        <span class="tech-tag">可視化</span>
-                    </div>
-                    <a href="https://bappton-rally-tracke-xzakvpyx4du9loxvgcg4zc.streamlit.app/" target="_blank" class="project-link">アプリを見る →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🦴</div>
-                        <span class="project-tag">スポーツ</span>
-                    </div>
-                    <h3>骨格解析アプリ</h3>
-                    <p class="project-description">
-                        画像や動画から人体の骨格・姿勢を解析するアプリケーション。スポーツフォームの分析、リハビリテーションの動作確認、姿勢改善のための可視化ツールとして活用できます。
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">MediaPipe</span>
-                        <span class="tech-tag">姿勢推定</span>
-                    </div>
-                    <a href="https://pose-estimation-app-qrplkjgkstxhqv5i4hqmby.streamlit.app/" target="_blank" class="project-link">アプリを見る →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">💼</div>
-                        <span class="project-tag">ビジネス</span>
-                    </div>
-                    <h3>コンサルAI</h3>
-                    <p class="project-description">
-                        ビジネスコンサルティングをサポートするAIアシスタント。経営課題の分析から戦略立案まで、LLMを活用して専門的なアドバイスを提供する対話型コンサルティングツールです。
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Streamlit</span>
-                        <span class="tech-tag">OpenAI API</span>
-                        <span class="tech-tag">LLM</span>
-                    </div>
-                    <a href="https://app-llm-app-nymblsbzxlvd2d84nmmhg8.streamlit.app/" target="_blank" class="project-link">アプリを見る →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">🎤</div>
-                        <span class="project-tag">教育支援</span>
-                    </div>
-                    <h3>就職・進学面接練習支援AI</h3>
-                    <p class="project-description">
-                        AIを活用した面接練習支援システム。音声入力・音声出力機能を搭載し、実際の面接に近い環境で練習が可能。工業高校生の就職活動や進学面接の準備をサポートする対話型トレーニングツールです。質問への回答をリアルタイムで評価し、改善点のフィードバックも提供します。
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Web Speech API</span>
-                        <span class="tech-tag">OpenAI API</span>
-                        <span class="tech-tag">音声認識</span>
-                    </div>
-                    <a href="https://tbw0619.github.io/interview-ai/" target="_blank" class="project-link">アプリを見る →</a>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">📝</div>
-                        <span class="project-tag">教育支援</span>
-                    </div>
-                    <h3>要録所見自動生成システム</h3>
-                    <p class="project-description">
-                        工業高校教師の業務効率化を支援する、AI活用型の指導要録所見自動生成システム。指導要録の所見欄記入（年度末に全生徒分、1名あたり6項目・900-1200字）を自動化し、作業時間を1名30分→1分に短縮（約95%削減）。Google Gemini 2.0 Flash APIによる高品質な文章生成で、1クラス40名分を約15分で処理できます。
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Google Apps Script</span>
-                        <span class="tech-tag">Gemini API</span>
-                        <span class="tech-tag">Google Sheets</span>
-                        <span class="tech-tag">業務効率化</span>
-                    </div>
-                    <a href="https://docs.google.com/spreadsheets/d/1gjfFzByTsoROnPLvVcBlOMDRviJucmy7bsAubXtMuQY/edit?gid=47115155#gid=47115155" target="_blank" class="project-link">プロジェクトを見る →</a>
-                </div>
-            </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2023〜現在</div>
+          <div class="timeline-title">山形県立寒河江工業高等学校 教諭</div>
+          <div class="timeline-desc">工業（電気）科担当。合理的配慮が必要な生徒が多く在籍するクラス担任として、個別最適化学習とAI活用校務改善を推進。</div>
+          <ul class="timeline-list">
+            <li>Google for Educationを活用した個別最適化学習の計画・実施</li>
+            <li>生成AIを活用した「授業支援AI」「面接練習AI」「要録生成AI」の開発・導入</li>
+            <li>不登校生徒への伴走支援で毎日登校を実現、インクルーシブなクラス文化を醸成</li>
+            <li>外部連携キャリアプログラムの企画・実行、全校キャリア面談の体系化を推進</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- スキルセクション -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">スキル・技術</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">🤝</div>
-                    <h3>コーチング・メンタリング</h3>
-                    <p>1on1対話を通じて本質的な課題や想いを引き出す傾聴力と信頼関係構築力。生徒の内発的動機を引き出し、進路目標達成を支援。</p>
-                    <div class="skill-tags">
-                        <span class="tag">1on1面談</span>
-                        <span class="tag">傾聴力</span>
-                        <span class="tag">信頼関係構築</span>
-                        <span class="tag">個別最適化支援</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">📋</div>
-                    <h3>工業教育・エンジニア教育</h3>
-                    <p>工業高校生のエンジニア育成の専門的知識・技能の指導。国家資格取得支援やキャリア教育を通じて、生徒の技術者としての成長をサポート。</p>
-                    <div class="skill-tags">
-                        <span class="tag">企画立案</span>
-                        <span class="tag">WBS作成</span>
-                        <span class="tag">進捗管理</span>
-                        <span class="tag">ステークホルダー調整</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🐍</div>
-                    <h3>プログラミング・AI開発</h3>
-                    <p>Python、生成AIアプリケーション開発。API連携、プロンプトエンジニアリングを活用した業務改善ツール・学習支援ツールを開発。</p>
-                    <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Streamlit</span>
-                        <span class="tag">OpenAI API</span>
-                        <span class="tag">C言語</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">📊</div>
-                    <h3>データ分析・ICT活用</h3>
-                    <p>Excelを用いた成績データ分析と傾向把握。Google Workspaceを活用した業務効率化と個別最適化学習の設計・導入。</p>
-                    <div class="skill-tags">
-                        <span class="tag">Excel分析</span>
-                        <span class="tag">Google Workspace</span>
-                        <span class="tag">Classroom</span>
-                        <span class="tag">Forms</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🎯</div>
-                    <h3>課題解決・プロセス改善</h3>
-                    <p>活動が停滞していた部活動を立て直し、課題分析とプロセス改善により県大会上位進出を達成。データに基づく改善活動を実践</p>
-                    <div class="skill-tags">
-                        <span class="tag">課題発見力</span>
-                        <span class="tag">プロセス改善</span>
-                        <span class="tag">業務効率化</span>
-                        <span class="tag">実装力</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🎓</div>
-                    <h3>教育実績・資格</h3>
-                    <p>7年間の高等学校教育経験。担任クラス進路決定率100%、バドミントン部県大会ベスト16達成。</p>
-                    <div class="skill-tags">
-                        <span class="tag">高等学校教諭一種（工業）</span>
-                        <span class="tag">進路指導</span>
-                        <span class="tag">部活動指導</span>
-                    </div>
-                </div>
-            </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2024〜現在</div>
+          <div class="timeline-title">DMM WEBCAMP 生成AIエンジニアコース</div>
+          <div class="timeline-desc">生成AI技術を体系的に学習し、教育現場の課題解決に応用。複数の業務改善ツールを開発・実用化。</div>
+          <ul class="timeline-list">
+            <li>Python、生成AIアプリケーション開発（API連携、プロンプトエンジニアリング）を習得</li>
+            <li>現場のニーズをヒアリングし、実用的なツールを開発・導入</li>
+            <li>授業準備や事務作業時間を大幅削減に貢献</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- 実績セクション -->
-    <section id="achievements" class="achievements">
-        <div class="container">
-            <h2 class="section-title">実績・成果</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-number">100%</div>
-                    <h3>進路決定率</h3>
-                    <p>担任クラス全員の進路目標達成</p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-number">7年</div>
-                    <h3>教育経験</h3>
-                    <p>高等学校での指導経験</p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-number">Best16</div>
-                    <h3>県大会成績</h3>
-                    <p>バドミントン部顧問として達成</p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-number">7+</div>
-                    <h3>開発AIツール</h3>
-                    <p>教育現場で実用化・運用中</p>
-                </div>
-            </div>
-
-            <div class="projects">
-                <h3 class="subsection-title">主な取り組み</h3>
-                <div class="project-list">
-                    <div class="project-item">
-                        <h4>生成AIツール開発による教員の業務負荷削減</h4>
-                        <p>教員の長時間労働が学校全体の課題となる中、現場のニーズをヒアリングし、「授業支援AI」「面接練習AI」「要録生成AI」を開発・導入。授業準備や進路指導、事務作業にかかる時間を大幅に削減し、教員がより生徒と向き合う時間を確保できる体制の構築に貢献しました。</p>
-                    </div>
-                    <div class="project-item">
-                        <h4>生徒との対話を通じた進路未決定問題の解決</h4>
-                        <p>「課題集中校」で家庭環境等に多様な課題を抱える生徒が多く在籍する中、全生徒と定期的な1on1面談を実施。個々の背景を深く理解し信頼関係を構築、一人ひとりに合わせた個別の指導計画を策定・実行しました。その結果、問題行動の発生件数を大幅に削減し、2クラス全員の進路目標達成を実現しました。</p>
-                    </div>
-                    <div class="project-item">
-                        <h4>多様なステークホルダーを巻き込む交渉・企画力</h4>
-                        <p>コロナ禍で学校行事が中止決定された際、生徒の成長機会を守るため、客観的データとロジックに基づいた企画書を作成し、学校経営層と粘り強く交渉。一度は覆った決定を再度覆し、開催承認を得ることに成功しました。また、外部専門家を招聘したキャリア講演会の企画・実現など、関係者の利害を調整しプロジェクトを成功に導く力を発揮しています。</p>
-                    </div>
-                </div>
-            </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2025〜</div>
+          <div class="timeline-title">EdTech 業界への挑戦</div>
+          <div class="timeline-desc">教員としての現場知識 × エンジニアリングスキルを活かし、EdTech企業でのカスタマーサクセス・営業職を目指して転職活動中。</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- お問い合わせセクション -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">お問い合わせ</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>ご連絡お待ちしております</h3>
-                    <p>
-                        転職やキャリアに関するご相談、その他ご質問がございましたら、
-                        お気軽にお問い合わせください。
-                    </p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div>
-                                <h4>メール</h4>
-                                <p>t.bw0619@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">💻</div>
-                            <div>
-                                <h4>GitHub</h4>
-                                <p><a href="https://github.com/tbw0619?tab=repositories" target="_blank" style="color: inherit; text-decoration: underline;">github.com/tbw0619</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div>
-                                <h4>所在地</h4>
-                                <p>山形県</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">お名前</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">メールアドレス</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">件名</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">メッセージ</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">送信する</button>
-                </form>
-            </div>
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-label">PROJECTS</div>
+      <h2 class="section-title">開発プロジェクト</h2>
+      <div class="projects-grid">
+        <div class="project-card fade-up">
+          <div class="project-header">
+            <div class="project-icon">🎓</div>
+            <span class="project-category">EDU</span>
+          </div>
+          <div class="project-title">生産技術支援AIアプリ</div>
+          <div class="project-desc">工業高校の「生産技術」科目の学習支援AIアプリケーション。電気・電子・情報分野について、授業で分からないことを質問できる教育ツール。生徒の理解度に合わせて専門的な内容を分かりやすく解説します。</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">OpenAI API</span><span class="tag">LLM</span>
+          </div>
+          <a href="https://seisangijutu-ai-app-bm6dhxkus2rjwv6vaaugnp.streamlit.app/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
         </div>
-    </section>
-
-    <!-- フッター -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2025 五十嵐貴紀 Portfolio. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://github.com/tbw0619?tab=repositories" target="_blank" aria-label="GitHub">GitHub</a>
-                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                    <a href="#" aria-label="Twitter">Twitter</a>
-                </div>
-            </div>
+        <div class="project-card fade-up" style="transition-delay:0.1s">
+          <div class="project-header">
+            <div class="project-icon">⚡</div>
+            <span class="project-category">EDU</span>
+          </div>
+          <div class="project-title">電気回路練習問題サイト</div>
+          <div class="project-desc">工業高校生向けの電気回路学習支援システム。基本的な電気素子から交流回路まで段階的に学習できる練習問題と解説を提供。手書き解答のAIによる自動評価機能を搭載。</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OpenAI API</span><span class="tag">画像認識</span>
+          </div>
+          <a href="https://circuit-trainer-app-76df4b1dee11.herokuapp.com/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
         </div>
-    </footer>
+        <div class="project-card fade-up" style="transition-delay:0.2s">
+          <div class="project-header">
+            <div class="project-icon">🎤</div>
+            <span class="project-category">EDU</span>
+          </div>
+          <div class="project-title">就職・進学面接練習支援AI</div>
+          <div class="project-desc">AIを活用した面接練習支援システム。音声入力・音声出力機能を搭載し、実際の面接に近い環境で練習が可能。質問への回答をリアルタイムで評価し、改善点のフィードバックも提供します。</div>
+          <div class="skill-tags">
+            <span class="tag">JavaScript</span><span class="tag">Web Speech API</span><span class="tag">OpenAI API</span><span class="tag">音声認識</span>
+          </div>
+          <a href="https://tbw0619.github.io/interview-ai/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
+        </div>
+        <div class="project-card fade-up" style="transition-delay:0.3s">
+          <div class="project-header">
+            <div class="project-icon">📝</div>
+            <span class="project-category">EDU</span>
+          </div>
+          <div class="project-title">要録所見自動生成システム</div>
+          <div class="project-desc">AI活用型の指導要録所見自動生成システム。作業時間を1名30分→1分に短縮（約95%削減）。Gemini 2.0 Flash APIによる高品質な文章生成で、1クラス40名分を約15分で処理できます。</div>
+          <div class="skill-tags">
+            <span class="tag">Google Apps Script</span><span class="tag">Gemini API</span><span class="tag">Google Sheets</span>
+          </div>
+          <a href="https://docs.google.com/spreadsheets/d/1gjfFzByTsoROnPLvVcBlOMDRviJucmy7bsAubXtMuQY/edit?gid=47115155#gid=47115155" target="_blank" rel="noopener" class="project-link">プロジェクトを見る →</a>
+        </div>
+        <div class="project-card fade-up" style="transition-delay:0.4s">
+          <div class="project-header">
+            <div class="project-icon">🏸</div>
+            <span class="project-category">SPORTS</span>
+          </div>
+          <div class="project-title">Badminton Rally Tracker</div>
+          <div class="project-desc">バドミントンのラリーを記録・分析するWebアプリケーション。試合中のラリー数やショットパターンを追跡し、プレイヤーのパフォーマンス向上に役立つデータを可視化します。</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">データ分析</span><span class="tag">可視化</span>
+          </div>
+          <a href="https://bappton-rally-tracke-xzakvpyx4du9loxvgcg4zc.streamlit.app/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
+        </div>
+        <div class="project-card fade-up" style="transition-delay:0.5s">
+          <div class="project-header">
+            <div class="project-icon">🦴</div>
+            <span class="project-category">SPORTS</span>
+          </div>
+          <div class="project-title">骨格解析アプリ</div>
+          <div class="project-desc">画像や動画から人体の骨格・姿勢を解析するアプリケーション。スポーツフォームの分析、リハビリテーションの動作確認、姿勢改善のための可視化ツールとして活用できます。</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">MediaPipe</span><span class="tag">姿勢推定</span>
+          </div>
+          <a href="https://pose-estimation-app-qrplkjgkstxhqv5i4hqmby.streamlit.app/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
+        </div>
+        <div class="project-card fade-up" style="transition-delay:0.6s">
+          <div class="project-header">
+            <div class="project-icon">💼</div>
+            <span class="project-category">BIZ</span>
+          </div>
+          <div class="project-title">コンサルAI</div>
+          <div class="project-desc">ビジネスコンサルティングをサポートするAIアシスタント。経営課題の分析から戦略立案まで、LLMを活用して専門的なアドバイスを提供する対話型コンサルティングツール。</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">OpenAI API</span><span class="tag">LLM</span>
+          </div>
+          <a href="https://app-llm-app-nymblsbzxlvd2d84nmmhg8.streamlit.app/" target="_blank" rel="noopener" class="project-link">アプリを見る →</a>
+        </div>
+      </div>
+      <div class="philosophy-block fade-up">
+        <div class="philosophy-text">
+          失敗も試行錯誤も<em>そのまま公開</em>する。<br>
+          「現場の先生がガチで作ったもの」だから、<br>
+          リアルな価値がある<em>と思っている</em>。
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="js/script.js"></script>
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-label">SKILLS</div>
+      <h2 class="section-title">できること</h2>
+      <div class="skills-grid">
+        <div class="skill-card fade-up">
+          <div class="skill-icon">🤖</div>
+          <div class="skill-name">AI・LLM 活用</div>
+          <div class="skill-desc">OpenAI・Gemini APIを使った実用ツール設計・開発。RAG構築、プロンプトエンジニアリング。</div>
+          <div class="skill-tags"><span class="tag">OpenAI API</span><span class="tag">Gemini</span><span class="tag">RAG</span><span class="tag">プロンプト設計</span></div>
+        </div>
+        <div class="skill-card fade-up" style="transition-delay:0.1s">
+          <div class="skill-icon">🌐</div>
+          <div class="skill-name">Web 開発</div>
+          <div class="skill-desc">Python・Streamlit・Flask・FastAPIでのWebアプリ開発。Herokuへのデプロイ実績あり。</div>
+          <div class="skill-tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">Flask</span><span class="tag">FastAPI</span></div>
+        </div>
+        <div class="skill-card fade-up" style="transition-delay:0.2s">
+          <div class="skill-icon">⚡</div>
+          <div class="skill-name">業務自動化</div>
+          <div class="skill-desc">Google Apps Scriptを使った教育現場の業務自動化。指導要録・通知表コメント生成など。</div>
+          <div class="skill-tags"><span class="tag">GAS</span><span class="tag">Google Workspace</span><span class="tag">自動化</span><span class="tag">Excel VBA</span></div>
+        </div>
+        <div class="skill-card fade-up" style="transition-delay:0.3s">
+          <div class="skill-icon">🤝</div>
+          <div class="skill-name">コーチング・1on1</div>
+          <div class="skill-desc">1on1対話を通じて本質的な課題や想いを引き出す傾聴力と信頼関係構築力。進路目標達成を支援。</div>
+          <div class="skill-tags"><span class="tag">1on1面談</span><span class="tag">傾聴力</span><span class="tag">個別最適化</span></div>
+        </div>
+        <div class="skill-card fade-up" style="transition-delay:0.4s">
+          <div class="skill-icon">🏫</div>
+          <div class="skill-name">教育・授業設計</div>
+          <div class="skill-desc">電気・電子・プログラミング領域の授業設計7年。生徒の躓きポイントを熟知した教材開発。</div>
+          <div class="skill-tags"><span class="tag">電気工学</span><span class="tag">授業設計</span><span class="tag">生徒指導</span></div>
+        </div>
+        <div class="skill-card fade-up" style="transition-delay:0.5s">
+          <div class="skill-icon">🎯</div>
+          <div class="skill-name">課題解決・改善</div>
+          <div class="skill-desc">活動が停滞していた部活動を立て直し、データに基づく改善活動で県大会上位進出を達成。</div>
+          <div class="skill-tags"><span class="tag">課題発見力</span><span class="tag">プロセス改善</span><span class="tag">データ活用</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label">CONTACT</div>
+      <h2 class="section-title">活動記録・連絡先</h2>
+      <div class="links-grid fade-up">
+        <a href="https://note.com/yakuendai" target="_blank" rel="noopener" class="link-card">
+          <div class="link-icon">📝</div>
+          <div><div class="link-info-label">BLOG</div><div class="link-info-title">ポンコツ教員ブログ (note)</div></div>
+        </a>
+        <a href="https://github.com/tbw0619?tab=repositories" target="_blank" rel="noopener" class="link-card">
+          <div class="link-icon">💻</div>
+          <div><div class="link-info-label">CODE</div><div class="link-info-title">GitHub ポートフォリオ</div></div>
+        </a>
+        <a href="mailto:t.bw0619@gmail.com" class="link-card">
+          <div class="link-icon">✉️</div>
+          <div><div class="link-info-label">CONTACT</div><div class="link-info-title">t.bw0619@gmail.com</div></div>
+        </a>
+      </div>
+      <div class="contact-grid fade-up" style="transition-delay:0.15s">
+        <div>
+          <div class="contact-info-title">ご連絡お待ちしております</div>
+          <p>転職やキャリアに関するご相談、その他ご質問がございましたら、お気軽にお問い合わせください。</p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="contact-detail-icon">📧</span>
+              <a href="mailto:t.bw0619@gmail.com">t.bw0619@gmail.com</a>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail-icon">💻</span>
+              <a href="https://github.com/tbw0619?tab=repositories" target="_blank" rel="noopener">github.com/tbw0619</a>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail-icon">📍</span>
+              <span>山形県</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">お名前</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">メールアドレス</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">件名</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          <div class="form-group">
+            <label for="message">メッセージ</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">SEND MESSAGE →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 IGARASHI TAKANORI</span>
+    <div class="footer-links">
+      <a href="https://github.com/tbw0619?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://note.com/yakuendai" target="_blank" rel="noopener">Note</a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
